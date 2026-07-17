@@ -30,16 +30,12 @@ def _require(**fields: Optional[str]) -> None:
 class LunarTools:
     def __init__(
         self,
-        client_id: str,
         *,
         base_url: str = DEFAULT_BASE_URL,
         webhook_base_url: str = DEFAULT_WEBHOOK_BASE_URL,
         timeout: float = DEFAULT_TIMEOUT,
         session: Optional[requests.Session] = None,
     ) -> None:
-        _require(client_id=client_id)
-
-        self.client_id = client_id
         self._base_url = base_url.rstrip("/")
         self._webhook_base_url = webhook_base_url.rstrip("/")
         self._timeout = timeout
@@ -65,7 +61,6 @@ class LunarTools:
         data = self._post(
             f"{self._base_url}/solve",
             {
-                "client_id": self.client_id,
                 "api_key": api_key,
                 "captcha_type": captcha_type,
                 "page_url": page_url,
@@ -92,7 +87,6 @@ class LunarTools:
         data = self._post(
             f"{self._base_url}/imap",
             {
-                "client_id": self.client_id,
                 "api_key": api_key,
                 "email": email,
                 "imap_email": imap_email,
@@ -118,7 +112,6 @@ class LunarTools:
         data = self._post(
             f"{self._base_url}/imap",
             {
-                "client_id": self.client_id,
                 "api_key": api_key,
                 "email": email,
                 "subject": subject,

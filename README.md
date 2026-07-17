@@ -16,12 +16,12 @@ from lunartools import LunarTools
 
 ## Quick start
 
-Initialize once with your Client ID (Settings page in the toolbox), then pass the relevant API key per call.
+Create a client, then pass an API key per call. The key is created in the toolbox and identifies both the key and the toolbox it belongs to, so no Client ID is needed.
 
 ```python
 from lunartools import LunarTools
 
-client = LunarTools("lt_c0467cf9074b81e3a916178e597c9d0d")
+client = LunarTools()
 
 otp = client.otp("lt_ik_...", email="softies_archaic_8x@icloud.com", site="nike")
 print(otp.otp_code, "from", otp.imap_email)
@@ -126,7 +126,6 @@ except LunarToolsError as error:
 
 ```python
 client = LunarTools(
-    "lt_...",
     base_url="https://remote.lunaraio.com",
     timeout=150.0,
 )
@@ -135,6 +134,6 @@ client = LunarTools(
 Requests are long-polled and can take up to 120s, so keep `timeout` above your per-request `timeout_ms`. The client is also a context manager:
 
 ```python
-with LunarTools("lt_...") as client:
+with LunarTools() as client:
     ...
 ```
