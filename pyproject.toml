@@ -1,0 +1,24 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "lunartools-py"
+version = "0.1.0"
+description = "SDK for the LunarTools remote APIs: captcha solving, inbox OTP retrieval, and Discord webhook forwarding."
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+keywords = ["lunartools", "captcha", "hcaptcha", "otp", "imap", "webhook", "discord"]
+dependencies = ["requests>=2.28"]
+
+[project.urls]
+Homepage = "https://github.com/lunaraio/lunartools-py"
+Repository = "https://github.com/lunaraio/lunartools-py"
+Issues = "https://github.com/lunaraio/lunartools-py/issues"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/lunartools"]
+
+[tool.hatch.build.targets.sdist]
+include = ["src/lunartools", "README.md"]
